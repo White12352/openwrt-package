@@ -49,6 +49,7 @@ endef
 define Build/Compile
 	( \
 		pushd $(PKG_BUILD_DIR) ; \
+		export NODE_OPTIONS=--openssl-legacy-provider ; \
 		npm --prefix client ci ; \
 		npm --prefix client run build-prod ; \
 		packr -z -v -i internal ; \
